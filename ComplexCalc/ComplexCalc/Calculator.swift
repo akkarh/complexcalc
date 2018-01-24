@@ -88,5 +88,19 @@ class Calculator {
         return ["x": (a["x"]! - b["x"]!), "y": (a["y"]! - b["y"]!)]
     }
 
-    // Math Op functions
+    // returns the result of given operation on two ints
+    func mathOp(lhs a: Int, rhs b: Int, op: (Int, Int) -> Int) -> Int {
+        return op(a, b)
+    }
+    
+    // returns the result of given operation on elements in the input array
+    func mathOp(args input: [Int], beg : Int, op: (Int, Int) -> Int) -> Int {
+        var result = 0
+        var soFar = beg
+        for i in input {
+            result = op(soFar, i)
+            soFar = result
+        }
+        return result
+    }
 }
